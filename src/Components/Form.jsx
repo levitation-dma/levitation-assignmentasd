@@ -26,7 +26,7 @@ function Form () {
     const upload = [...multipleFile]
     let limitExceed = false
     files.some(file => {
-      if (upload.length > 6) setFileLimit(true)
+      if (upload.length >= 6) setFileLimit(true)
 
       alert(`You can only upload at max 5 Files`)
       setFileLimit(false)
@@ -52,18 +52,18 @@ function Form () {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    console.log(username)
-    console.log(email)
-    console.log(phoneno)
-    console.log(addressone)
-    console.log(addresstwo)
-    console.log(city)
-    console.log(state)
-    console.log(pincode)
-    console.log(country)
-    console.log(geolocation)
-    console.log(singleFile)
-    console.log(multipleFile)
+    // console.log(username)
+    // console.log(email)
+    // console.log(phoneno)
+    // console.log(addressone)
+    // console.log(addresstwo)
+    // console.log(city)
+    // console.log(state)
+    // console.log(pincode)
+    // console.log(country)
+    // console.log(geolocation)
+    // console.log(singleFile)
+    // console.log(multipleFile)
 
     const response = await loginUser({
       username,
@@ -99,7 +99,7 @@ function Form () {
           Form
         </h1>
         <form className='mt-6' onSubmit={handleSubmit}>
-          <div class='grid grid-cols-2 gap-4'>
+          <div class='grid grid-cols-3 gap-4'>
             <div className='mb-2'>
               <label for='username' className={formStylelabel}>
                 User Name
@@ -129,7 +129,7 @@ function Form () {
               <input
                 type='text'
                 className={formStyleInput}
-                placeholder='Enter Phone-No'
+                placeholder='Phone No'
                 onChange={e => setPhoneno(e.target.value)}
               />
             </div>
@@ -191,17 +191,17 @@ function Form () {
                 onChange={e => setPincode(e.target.value)}
               />
             </div>
-          </div>
-          <div className='mb-2'>
-            <label for='pincode' className={formStylelabel}>
-              Country
-            </label>
-            <input
-              type='text'
-              className={formStyleInput}
-              placeholder='Enter Country'
-              onChange={e => setCountry(e.target.value)}
-            />
+            <div className='mb-2'>
+              <label for='pincode' className={formStylelabel}>
+                Country
+              </label>
+              <input
+                type='text'
+                className={formStyleInput}
+                placeholder='Enter Country'
+                onChange={e => setCountry(e.target.value)}
+              />
+            </div>
           </div>
           <div className='mb-2'>
             <label className={formStylelabel} for='file_input'>
@@ -248,7 +248,9 @@ function Form () {
           </div>
           <Geolocation getData={getData} />
           <div className='mt-6'>
-            <button className={formStyleInput}>Login</button>
+            <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600'>
+              Submit
+            </button>
           </div>
         </form>
       </div>
